@@ -15,7 +15,7 @@ services:
       - ./.env
   web:
     # build: ../api_yamdb
-    image: asp781/yamdb:v.27.11.2022
+    image: asp781/infra_sp2:v.29.11.2022
     restart: always
     volumes:
       # Контейнер web будет работать с данными, хранящиеся в томе static_value, 
