@@ -14,7 +14,7 @@ services:
     env_file:
       - ./.env
   web:
-    # build: ../api_yamdb
+    # build: ../api_yamdb_
     image: asp781/infra_sp2:v.29.11.2022
     restart: always
     volumes:
