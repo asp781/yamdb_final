@@ -59,6 +59,8 @@ jobs:
         # Пуш образа в Docker Hub 
         uses: docker/build-push-action@v2 
         with:
+          # Путь до Dockerfile
+          context: api_yamdb/
           push: true
           tags: asp781/infra_actions:latest
   
