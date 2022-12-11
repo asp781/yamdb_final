@@ -39,7 +39,7 @@ class UserCreationSerializer(serializers.ModelSerializer):
         username = username.lower()
         if username == 'me':
             raise serializers.ValidationError('Данный username запрещен.')
-        elif User.objects.filter(username=username).exists():
+        if User.objects.filter(username=username).exists():
             raise serializers.ValidationError(
                 'Пользователь с таким username существует.'
             )

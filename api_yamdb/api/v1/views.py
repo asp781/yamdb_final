@@ -4,12 +4,10 @@ from django.core.mail import send_mail
 from django.db.models import Avg
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters
-from rest_framework import viewsets, status
-from rest_framework.decorators import api_view, permission_classes, action
-from rest_framework.mixins import (
-    CreateModelMixin, ListModelMixin, DestroyModelMixin
-)
+from rest_framework import filters, status, viewsets
+from rest_framework.decorators import action, api_view, permission_classes
+from rest_framework.mixins import (CreateModelMixin, DestroyModelMixin,
+                                   ListModelMixin)
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
@@ -17,23 +15,12 @@ from rest_framework_simplejwt.tokens import AccessToken
 from reviews.models import Categories, Genres, Review, Title, User
 
 from .filters import TitleModelFilter
-from .permissions import (
-    IsAdmin,
-    IsModeratorAdmin,
-    IsAdminOrReadOnly
-)
-from .serializers import (
-    CommentSerializer,
-    ReviewSerializer,
-    ReadOnlyTitleSerializer,
-    MeSerializer,
-    UserSerializer,
-    TokenGeneratorSerialiser,
-    CategoriesSerializer,
-    GenresSerializer,
-    TitleSerializer,
-    UserCreationSerializer
-)
+from .permissions import IsAdmin, IsAdminOrReadOnly, IsModeratorAdmin
+from .serializers import (CategoriesSerializer, CommentSerializer,
+                          GenresSerializer, MeSerializer,
+                          ReadOnlyTitleSerializer, ReviewSerializer,
+                          TitleSerializer, TokenGeneratorSerialiser,
+                          UserCreationSerializer, UserSerializer)
 
 
 class UserViewSet(viewsets.ModelViewSet):
