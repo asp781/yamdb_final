@@ -63,7 +63,7 @@ jobs:
           # Путь до Dockerfile_
           context: api_yamdb/
           push: true
-          tags: asp781/infra_sp2:v29.11.2022
+          tags: asp781/infra_sp2:latest
   
   deploy:
     runs-on: ubuntu-latest
