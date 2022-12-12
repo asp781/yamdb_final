@@ -79,7 +79,7 @@ jobs:
           script: |
             sudo docker-compose stop
             sudo docker-compose rm web
-            # sudo docker image rm asp781/infra_sp2:v29.11.2022
+            # sudo docker image rm asp781/infra_sp2:latest
             # sudo docker-compose pull
             touch .env
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
