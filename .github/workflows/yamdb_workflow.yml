@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   tests:
-    # «Раннер» — создание изолированного окружения с последней версией Ubuntu_
+    # «Раннер» — создание изолированного окружения с последней версией Ubuntu
     runs-on: ubuntu-latest
 
     steps:
@@ -79,8 +79,8 @@ jobs:
           script: |
             sudo docker-compose stop
             sudo docker-compose rm web
-            # sudo docker image rm asp781/infra_sp2:latest
-            # sudo docker-compose pull
+            sudo docker image rm asp781/infra_sp2:latest
+            sudo docker-compose pull
             touch .env
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
             echo DB_NAME=${{ secrets.DB_NAME }} >> .env
