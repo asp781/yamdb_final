@@ -1,2 +1,0 @@
-ssh asp78@asp781.ddns.net
-docker exec -it infra-web-1 bash
