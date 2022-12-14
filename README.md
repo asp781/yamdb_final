@@ -12,20 +12,20 @@ cd /d/dev
 Клонировать репозиторий и перейти в него в командной строке:
 
 ```
-git clone git@github.com:asp781/infra_sp2.git
-```
+git clone git@github.com:asp781/yamdb_final.git
 
 ```
-cd /d/dev/infra_sp2/infra
-```
+## Создать переменные окружения в разделе `secrets` настроек текущего репозитория:
 
-Cоздать файл переменных окружения:
+- DOCKER_PASSWORD # Пароль от Docker Hub
+- DOCKER_USERNAME # Логин от Docker Hub
+- HOST # Публичный ip адрес сервера
+- USER # Пользователь зарегистрированный на сервере
+- PASSPHRASE # Если ssh-ключ защищен фразой-паролем
+- SSH_KEY # Приватный ssh-ключ
+- TELEGRAM_TO # ID телеграм-аккаунта
+- TELEGRAM_TOKEN # Токен бота
 
-```
-nano .env
-
-```
-## Шаблон наполнения файла:
 - DB_ENGINE=django.db.backends.postgresql # указываем, что работаем с postgresql
 - DB_NAME=postgres # имя базы данных
 - POSTGRES_USER=postgres # логин для подключения к базе данных
@@ -33,46 +33,37 @@ nano .env
 - DB_HOST=db # название сервиса (контейнера)
 - DB_PORT=5432 # порт для подключения к БД 
 
-Запустить docker-compose командой:
-
-```
-docker-compose up
-```
-
-Открываем новый термирал:
-
-```
-cd /d/dev/infra_sp2/infra
-```
-
 Выполнить миграции:
 
 ```
-docker-compose exec web python manage.py migrate
+sudo docker-compose exec web python manage.py migrate
 ```
 
 Создать суперпользователя:
 
 ```
-docker-compose exec web python manage.py createsuperuser
+sudo docker-compose exec web python manage.py createsuperuser
 ```
 
 Собрать статику:
 
 ```
-docker-compose exec web python manage.py collectstatic --no-input
+sudo docker-compose exec web python manage.py collectstatic --no-input
 ```
 Наполнить базу данных:
 
 ```
-ddocker cp fixtures.json infra-web-1:app/
-```
-```
-docker-compose exec web python manage.py loaddata fixtures.json
+sudo docker-compose exec web python manage.py loaddata fixtures.json
 ```
 ## Теперь проект доступен по адресу:
-- http://localhost/api/v1/
-- http://localhost/admin/
+- http://asp781.ddns.net/api/v1/
+- http://asp781.ddns.net/admin/
+
+## После каждого обновления репозитория (`git push`) будет происходить:
+1. Проверка кода на соответствие стандарту PEP8 (с помощью пакета flake8) и запуск pytest из репозитория yamdb_final
+2. Сборка и доставка докер-образов на Docker Hub.
+3. Автоматический деплой.
+4. Отправка уведомления в Telegram.
 
 ## Технологии:
 - Python 3.8
@@ -85,4 +76,4 @@ docker-compose exec web python manage.py loaddata fixtures.json
 
 Автор проекта: [Алексей Спесивцев](https://github.com/asp781/)
 
-![example workflow](https://github.com/asp781/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg?event=push)
+![yamdb_workflow](https://github.com/asp781/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg?event=push)
