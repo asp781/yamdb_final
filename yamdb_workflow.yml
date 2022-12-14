@@ -3,6 +3,7 @@ name: yamdb-app workflow
 on: [push]
 
 jobs:
+
   tests:      
     runs-on: ubuntu-latest
     steps:    
