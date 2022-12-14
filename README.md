@@ -76,4 +76,6 @@ sudo docker-compose exec web python manage.py loaddata fixtures.json
 
 Автор проекта: [Алексей Спесивцев](https://github.com/asp781/)
 
+http://51.250.68.182/redoc/
+
 ![yamdb_workflow](https://github.com/asp781/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg?event=push)
