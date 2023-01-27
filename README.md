@@ -92,7 +92,7 @@ sudo docker-compose exec web python manage.py loaddata fixtures.json
 3. Автоматический деплой.
 4. Отправка уведомления в Telegram.
 
-## Технологии:
+## Технологии :
 - Python 3.8
 - Django 2.2.19
 - djangorestframework 3.12.4
